@@ -1,0 +1,16 @@
+{
+  "name": "typescript",
+  "version": "1.0.0",
+  "description": "Library for CARES",
+  "main": "./lib/src/index.js",
+  "types": "./lib/src/types",
+  "scripts": {
+    "build": "rmdir /s /q lib && tsc"
+  },
+  "author": "nikitimi",
+  "license": "MIT",
+  "dependencies": {
+    "firebase": "^10.6.0",
+    "react": "^18.2.0"
+  }
+}
