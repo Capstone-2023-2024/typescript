@@ -2,7 +2,10 @@ type CollectionPathType =
   | "complaints"
   | "student"
   | "mayor"
-  | "advisers"
+  | "faculty"
+  | "adviser"
   | "permission"
+  | "announcement"
+  | "projectSuggestion"
 
 export type { CollectionPathType }

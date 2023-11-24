@@ -1,2 +1,2 @@
-type CollectionPathType = "complaints" | "student" | "mayor" | "advisers";
+type CollectionPathType = "complaints" | "student" | "mayor" | "advisers" | "permission";
 export type { CollectionPathType };

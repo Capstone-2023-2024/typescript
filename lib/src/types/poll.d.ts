@@ -1,4 +1,3 @@
-import type { RoleWithAdmin } from "./permission";
 interface OptionProps {
     value: string;
     vote?: number;
@@ -12,7 +11,7 @@ interface PollProps {
     question: string;
 }
 interface PollEventProps extends Omit<PollProps, "days" | "text"> {
-    postedBy: RoleWithAdmin;
+    postedBy: string;
     votes?: Record<string, string>;
     dateOfExpiration: number;
     dateCreated: number;

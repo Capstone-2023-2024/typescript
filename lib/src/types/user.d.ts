@@ -31,4 +31,4 @@ interface FacultyInfoProps extends DateFileProps, UserBaseProps {
 interface StudentNameResultProps extends Pick<StudentInfoProps, "name"> {
     type?: "first" | "last" | "initial";
 }
-export type { CurrentUserRoleType, SectionType, StudentInfoProps, MayorInfoProps, AdviserInfoProps, FacultyInfoProps, StudentNameResultProps, };
+export type { ClassSectionProps, CurrentUserRoleType, SectionType, StudentInfoProps, MayorInfoProps, AdviserInfoProps, FacultyInfoProps, StudentNameResultProps, };
