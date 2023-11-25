@@ -14,4 +14,10 @@ declare function currentWeekDay(props: DateProps): {
     };
 };
 declare function calendarArray({ weekIndex, currentDate, maxDays, }: CalendarProps): WeekInfoProps[];
-export { weekNames, calendarArray, currentMonth, currentWeekDay };
+/** Formats integer into string with the intention of making all digits less than 10 with a 0 prefix. used for uniforming dates and months */
+declare function formatDateOrMonth(value: number): string;
+/** Returns formatted time with suffix */
+declare function formatTime(date: Date): string;
+/** Return time with custom prefix e.g. Today at XX:XX PM */
+declare function setUpPrefix(timestamp: Date): string;
+export { weekNames, calendarArray, currentMonth, currentWeekDay, formatDateOrMonth, formatTime, setUpPrefix, };

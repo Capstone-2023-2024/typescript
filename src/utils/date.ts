@@ -97,4 +97,59 @@ function calendarArray({
   return calendar
 }
 
-export { weekNames, calendarArray, currentMonth, currentWeekDay }
+/** Formats integer into string with the intention of making all digits less than 10 with a 0 prefix. used for uniforming dates and months */
+function formatDateOrMonth(value: number) {
+  return value > 9 ? `${value}` : `0${value}`
+}
+/** Returns formatted time with suffix */
+function formatTime(date: Date) {
+  const localeTimeString = date.toLocaleTimeString()
+  const splittedTime = localeTimeString.split(":")
+  const hour = formatDateOrMonth(Number(splittedTime[0]))
+  const minutes = formatDateOrMonth(Number(splittedTime[1]))
+  const suffix = splittedTime[2]?.match(/[A-Z]/g)
+  return `${hour}:${minutes}:${suffix}`
+}
+/** Return time with custom prefix e.g. Today at XX:XX PM */
+function setUpPrefix(timestamp: Date) {
+  const date = new Date()
+  const todate = date.getDate()
+  const tomonth = date.getMonth()
+  const toyear = date.getFullYear()
+  const formatTimeDate = formatTime(timestamp)
+  const timestampDate = timestamp.getDate()
+  const timestampMonth = timestamp.getMonth()
+  const timestampYear = timestamp.getFullYear()
+  const monthDifference = tomonth - timestampMonth
+  const yearDifference = toyear - timestampYear
+  const weekName = weekNames[timestamp.getDay()]?.substring(0, 3)
+
+  const capitalizeWeekName = `${weekName
+    ?.charAt(0)
+    .toUpperCase()}${weekName?.substring(1, weekName.length)}`
+
+  if (timestamp.getFullYear() === toyear && timestampMonth === tomonth) {
+    if (todate - 1 === timestampDate) {
+      return `Yesterday at ${formatTimeDate}`
+    } else if (todate === timestampDate) {
+      return `Today at ${formatTimeDate}`
+    }
+    return `${capitalizeWeekName} ${timestampDate} at ${formatTimeDate}`
+  } else if (monthDifference >= 11 && timestampYear === toyear) {
+    if (monthDifference === 1) {
+      return `${monthDifference} month ago at ${formatTimeDate}`
+    }
+    return `${monthDifference} months ago at ${formatTimeDate}`
+  }
+  return `${yearDifference} year(s) ago`
+}
+
+export {
+  weekNames,
+  calendarArray,
+  currentMonth,
+  currentWeekDay,
+  formatDateOrMonth,
+  formatTime,
+  setUpPrefix,
+}
