@@ -1,6 +1,7 @@
 interface GetImageFromStorageProps {
   imageName: string
   storageBucket: string
+  ref: string
   token?: string
 }
 
@@ -18,9 +19,9 @@ function getImageFromStorage(props: GetImageFromStorageProps) {
   const PATH = imageName.replace(/\//g, "%2F")
   switch (props.token) {
     case undefined:
-      return `${BASE}/v0/b/${storageBucket}/o/images%2F${PATH}?alt=media`
+      return `${BASE}/v0/b/${storageBucket}/o/${props.ref}%2F${PATH}?alt=media`
     default:
-      return `${BASE}/v0/b/${storageBucket}/o/images%2F${PATH}?alt=media&token=${props.token}`
+      return `${BASE}/v0/b/${storageBucket}/o/${props.ref}%2F${PATH}?alt=media&token=${props.token}`
   }
 }
 

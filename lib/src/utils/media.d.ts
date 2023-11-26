@@ -1,6 +1,7 @@
 interface GetImageFromStorageProps {
     imageName: string;
     storageBucket: string;
+    ref: string;
     token?: string;
 }
 /** Returns width and hieght object */
