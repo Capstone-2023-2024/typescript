@@ -1,8 +1,11 @@
-import type { RoleWithAdmin } from "./permission"
-
 interface OptionProps {
   value: string
   vote?: number
+}
+/** Student Number or Info for commenter */
+interface CommentProps {
+  commenter: string
+  value: string
 }
 
 interface PollProps {
@@ -12,6 +15,7 @@ interface PollProps {
   options: OptionProps[]
   text: string
   question: string
+  comments: CommentProps[]
 }
 
 interface PollEventProps extends Omit<PollProps, "days" | "text"> {
@@ -21,4 +25,4 @@ interface PollEventProps extends Omit<PollProps, "days" | "text"> {
   dateCreated: number
 }
 
-export type { OptionProps, PollProps, PollEventProps }
+export type { OptionProps, PollProps, PollEventProps, CommentProps }

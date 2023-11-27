@@ -2,6 +2,11 @@ interface OptionProps {
     value: string;
     vote?: number;
 }
+/** Student Number or Info for commenter */
+interface CommentProps {
+    commenter: string;
+    value: string;
+}
 interface PollProps {
     type: "poll";
     state: "unpublished" | "published";
@@ -9,6 +14,7 @@ interface PollProps {
     options: OptionProps[];
     text: string;
     question: string;
+    comments: CommentProps[];
 }
 interface PollEventProps extends Omit<PollProps, "days" | "text"> {
     postedBy: string;
@@ -16,4 +22,4 @@ interface PollEventProps extends Omit<PollProps, "days" | "text"> {
     dateOfExpiration: number;
     dateCreated: number;
 }
-export type { OptionProps, PollProps, PollEventProps };
+export type { OptionProps, PollProps, PollEventProps, CommentProps };

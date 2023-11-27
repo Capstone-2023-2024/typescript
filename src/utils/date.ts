@@ -107,7 +107,7 @@ function formatTime(date: Date) {
   const splittedTime = localeTimeString.split(":")
   const hour = formatDateOrMonth(Number(splittedTime[0]))
   const minutes = formatDateOrMonth(Number(splittedTime[1]))
-  const suffix = splittedTime[2]?.match(/[A-Z]/g)
+  const suffix = splittedTime[2]?.match(/["PM"-"AM"]/g)
   return `${hour}:${minutes}:${suffix}`
 }
 /** Return time with custom prefix e.g. Today at XX:XX PM */

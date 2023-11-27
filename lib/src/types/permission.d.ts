@@ -1,3 +1,4 @@
+import type { DateFileProps } from "./document";
 type RecipientType = "mayor" | "adviser" | RoleWithAdmin;
 type RoleWithAdmin = "program_chair" | "department_head" | "board_member";
 interface RoleProps {
@@ -5,7 +6,7 @@ interface RoleProps {
     partial: boolean;
 }
 /** This is the info for admins in `permission` collection */
-interface PermissionProps {
+interface PermissionProps extends DateFileProps {
     email: string;
     role: RoleProps;
 }

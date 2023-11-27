@@ -66,7 +66,9 @@ interface MayorInfoProps
 interface AdviserInfoProps
   extends ClassSectionProps,
     DateFileProps,
-    UserBaseProps {}
+    Pick<UserBaseProps, "email"> {
+  name?: string
+}
 interface FacultyInfoProps extends DateFileProps, UserBaseProps {}
 interface StudentNameResultProps extends Pick<StudentInfoProps, "name"> {
   type?: "first" | "last" | "initial"
