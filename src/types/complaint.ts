@@ -18,5 +18,13 @@ interface ComplaintBaseProps extends Partial<DocumentProps> {
   timestamp: number
 }
 interface ReadComplaintProps extends ComplaintProps, FirestoreDatabaseProps {}
+interface ReadClassSectionProps
+  extends ComplaintBaseProps,
+    FirestoreDatabaseProps {}
 
-export type { ComplaintProps, ComplaintBaseProps, ReadComplaintProps }
+export type {
+  ComplaintProps,
+  ComplaintBaseProps,
+  ReadComplaintProps,
+  ReadClassSectionProps,
+}
