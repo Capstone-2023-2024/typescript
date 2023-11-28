@@ -1,3 +1,4 @@
+import type { DateFileProps, FirestoreDatabaseProps } from "./document";
 interface OptionProps {
     value: string;
     vote?: number;
@@ -7,19 +8,22 @@ interface CommentProps {
     commenter: string;
     value: string;
 }
-interface PollProps {
-    type: "poll";
-    state: "unpublished" | "published";
-    days: number | null;
-    options: OptionProps[];
+interface PollProps extends DateFileProps {
     text: string;
+    type: "poll";
+    days: number | null;
+    state: "unpublished" | "published";
+    options: OptionProps[];
     question: string;
-    comments: CommentProps[];
+    postedBy: string;
+    comments?: CommentProps[];
 }
 interface PollEventProps extends Omit<PollProps, "days" | "text"> {
-    postedBy: string;
     votes?: Record<string, string>;
     dateOfExpiration: number;
-    dateCreated: number;
 }
-export type { OptionProps, PollProps, PollEventProps, CommentProps };
+interface ReadPollProps extends PollProps, FirestoreDatabaseProps {
+}
+interface ReadPollEventProps extends PollEventProps, FirestoreDatabaseProps {
+}
+export type { OptionProps, CommentProps, PollProps, PollEventProps, ReadPollProps, ReadPollEventProps, };

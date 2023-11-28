@@ -1,8 +1,8 @@
 interface GetImageFromStorageProps {
-    imageName: string;
-    storageBucket: string;
     ref: string;
     token?: string;
+    imageName: string;
+    storageBucket: string;
 }
 /** Returns width and hieght object */
 declare function imageDimension(size: number): {

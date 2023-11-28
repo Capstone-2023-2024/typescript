@@ -1,4 +1,4 @@
-import type { DateFileProps } from "./document";
+import type { DateFileProps, FirestoreDatabaseProps } from "./document";
 import type { DocumentProps } from "./media";
 import type { RecipientType } from "./permission";
 import type { StudentInfoProps } from "./user";
@@ -14,4 +14,6 @@ interface ComplaintBaseProps extends Partial<DocumentProps> {
     sender: string;
     timestamp: number;
 }
-export type { ComplaintProps, ComplaintBaseProps };
+interface ReadComplaintProps extends ComplaintProps, FirestoreDatabaseProps {
+}
+export type { ComplaintProps, ComplaintBaseProps, ReadComplaintProps };

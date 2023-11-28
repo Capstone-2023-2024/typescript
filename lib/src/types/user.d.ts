@@ -1,10 +1,14 @@
-import type { DateFileProps } from "./document";
-import { RoleWithAdmin } from "./permission";
-type CurrentUserRoleType = "student" | "mayor" | "faculty" | "adviser" | RoleWithAdmin;
+import type { DateFileProps, FirestoreDatabaseProps } from "./document";
+import type { RoleWithAdmin } from "./permission";
 type SectionType = "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j" | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z";
+type CurrentUserRoleType = "student" | "mayor" | "faculty" | "adviser" | RoleWithAdmin;
+interface StudentNameResultProps extends Pick<StudentInfoProps, "name"> {
+    type?: "first" | "last" | "initial";
+}
 interface UserBaseProps {
     email: string;
     name: string;
+    src?: string;
 }
 interface ClassSectionProps {
     yearLevel: string;
@@ -20,16 +24,20 @@ interface StudentInfoProps extends ClassSectionProps, DateFileProps, UserBasePro
     curriculum: string;
     age: string;
     scholarship: string;
-    src?: string;
 }
-interface MayorInfoProps extends Pick<StudentInfoProps, "studentNo">, ClassSectionProps, DateFileProps, UserBaseProps {
+interface MayorInfoProps extends Pick<StudentInfoProps, "studentNo">, ClassSectionProps, DateFileProps, Omit<UserBaseProps, "src"> {
 }
 interface AdviserInfoProps extends ClassSectionProps, DateFileProps, Pick<UserBaseProps, "email"> {
     name?: string;
 }
 interface FacultyInfoProps extends DateFileProps, UserBaseProps {
 }
-interface StudentNameResultProps extends Pick<StudentInfoProps, "name"> {
-    type?: "first" | "last" | "initial";
+interface ReadStudentInfoProps extends StudentInfoProps, FirestoreDatabaseProps {
 }
-export type { ClassSectionProps, CurrentUserRoleType, SectionType, StudentInfoProps, MayorInfoProps, AdviserInfoProps, FacultyInfoProps, StudentNameResultProps, };
+interface ReadMayorInfoProps extends MayorInfoProps, FirestoreDatabaseProps {
+}
+interface ReadAdviserInfoProps extends AdviserInfoProps, FirestoreDatabaseProps {
+}
+interface ReadFacultyInfoProps extends FacultyInfoProps, FirestoreDatabaseProps {
+}
+export type { SectionType, ClassSectionProps, CurrentUserRoleType, StudentNameResultProps, StudentInfoProps, MayorInfoProps, AdviserInfoProps, FacultyInfoProps, ReadStudentInfoProps, ReadMayorInfoProps, ReadAdviserInfoProps, ReadFacultyInfoProps, };
