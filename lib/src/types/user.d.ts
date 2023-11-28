@@ -27,7 +27,7 @@ interface StudentInfoProps extends ClassSectionProps, DateFileProps, UserBasePro
 }
 interface MayorInfoProps extends Pick<StudentInfoProps, "studentNo">, ClassSectionProps, DateFileProps, Omit<UserBaseProps, "src"> {
 }
-interface AdviserInfoProps extends ClassSectionProps, DateFileProps, Pick<UserBaseProps, "email"> {
+interface AdviserInfoProps extends ClassSectionProps, DateFileProps, Omit<UserBaseProps, "name"> {
     name?: string;
 }
 interface FacultyInfoProps extends DateFileProps, UserBaseProps {
