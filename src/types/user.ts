@@ -69,7 +69,7 @@ interface MayorInfoProps
 interface AdviserInfoProps
   extends ClassSectionProps,
     DateFileProps,
-    Pick<UserBaseProps, "email"> {
+    Omit<UserBaseProps, "name"> {
   name?: string
 }
 interface FacultyInfoProps extends DateFileProps, UserBaseProps {}
