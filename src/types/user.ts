@@ -1,12 +1,6 @@
-import type { DateFileProps } from "./document"
-import { RoleWithAdmin } from "./permission"
+import type { DateFileProps, FirestoreDatabaseProps } from "./document"
+import type { RoleWithAdmin } from "./permission"
 
-type CurrentUserRoleType =
-  | "student"
-  | "mayor"
-  | "faculty"
-  | "adviser"
-  | RoleWithAdmin
 type SectionType =
   | "a"
   | "b"
@@ -34,10 +28,20 @@ type SectionType =
   | "x"
   | "y"
   | "z"
+type CurrentUserRoleType =
+  | "student"
+  | "mayor"
+  | "faculty"
+  | "adviser"
+  | RoleWithAdmin
+interface StudentNameResultProps extends Pick<StudentInfoProps, "name"> {
+  type?: "first" | "last" | "initial"
+}
 
 interface UserBaseProps {
   email: string
   name: string
+  src?: string
 }
 interface ClassSectionProps {
   yearLevel: string
@@ -56,13 +60,12 @@ interface StudentInfoProps
   curriculum: string
   age: string
   scholarship: string
-  src?: string
 }
 interface MayorInfoProps
   extends Pick<StudentInfoProps, "studentNo">,
     ClassSectionProps,
     DateFileProps,
-    UserBaseProps {}
+    Omit<UserBaseProps, "src"> {}
 interface AdviserInfoProps
   extends ClassSectionProps,
     DateFileProps,
@@ -70,17 +73,29 @@ interface AdviserInfoProps
   name?: string
 }
 interface FacultyInfoProps extends DateFileProps, UserBaseProps {}
-interface StudentNameResultProps extends Pick<StudentInfoProps, "name"> {
-  type?: "first" | "last" | "initial"
-}
+
+interface ReadStudentInfoProps
+  extends StudentInfoProps,
+    FirestoreDatabaseProps {}
+interface ReadMayorInfoProps extends MayorInfoProps, FirestoreDatabaseProps {}
+interface ReadAdviserInfoProps
+  extends AdviserInfoProps,
+    FirestoreDatabaseProps {}
+interface ReadFacultyInfoProps
+  extends FacultyInfoProps,
+    FirestoreDatabaseProps {}
 
 export type {
+  SectionType,
   ClassSectionProps,
   CurrentUserRoleType,
-  SectionType,
+  StudentNameResultProps,
   StudentInfoProps,
   MayorInfoProps,
   AdviserInfoProps,
   FacultyInfoProps,
-  StudentNameResultProps,
+  ReadStudentInfoProps,
+  ReadMayorInfoProps,
+  ReadAdviserInfoProps,
+  ReadFacultyInfoProps,
 }

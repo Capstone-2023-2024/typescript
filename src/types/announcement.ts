@@ -1,4 +1,4 @@
-import type { DateFileProps } from "./document"
+import type { DateFileProps, FirestoreDatabaseProps } from "./document"
 import type { PhotoMediaProps } from "./media"
 
 type AnnouncementType =
@@ -18,4 +18,8 @@ interface AnnouncementProps extends DateFileProps, Partial<PhotoMediaProps> {
   markedDates: string[]
 }
 
-export type { AnnouncementProps, AnnouncementType }
+interface ReadAnnouncementProps
+  extends AnnouncementProps,
+    FirestoreDatabaseProps {}
+
+export type { AnnouncementProps, ReadAnnouncementProps, AnnouncementType }
