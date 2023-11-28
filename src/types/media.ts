@@ -1,5 +1,5 @@
 interface PhotoMediaProps {
-  photoUrlArray: string[]
+  photoUrls: string[]
 }
 
 interface DocumentProps {
