@@ -1,3 +1,4 @@
+import type { DateProps } from "./date"
 import type { DateFileProps, FirestoreDatabaseProps } from "./document"
 import type { PhotoMediaProps } from "./media"
 
@@ -7,6 +8,17 @@ type AnnouncementType =
   | "recognition"
   | "others"
 
+interface ReactNativeCalendarProps {
+  color: string
+  dotColor: string
+  textColor: string
+}
+
+/** For assigning Marked Dates */
+interface MarkedDatesProps extends Partial<ReactNativeCalendarProps> {
+  calendar: DateProps[]
+}
+
 interface AnnouncementProps extends DateFileProps, Partial<PhotoMediaProps> {
   type: AnnouncementType
   title: string
@@ -15,11 +27,19 @@ interface AnnouncementProps extends DateFileProps, Partial<PhotoMediaProps> {
   message: string
   postedBy: string
   department: "cics"
-  markedDates: string[]
+  markedDates: {
+    [x: string]: Omit<MarkedDatesProps, "calendar">
+  }
 }
 
 interface ReadAnnouncementProps
   extends AnnouncementProps,
     FirestoreDatabaseProps {}
 
-export type { AnnouncementProps, ReadAnnouncementProps, AnnouncementType }
+export type {
+  ReactNativeCalendarProps,
+  MarkedDatesProps,
+  AnnouncementProps,
+  ReadAnnouncementProps,
+  AnnouncementType,
+}

@@ -23,4 +23,14 @@ function recipientEscalation(role: CurrentUserRoleType): CurrentUserRoleType {
   }
 }
 
-export { validateEmail, recipientEscalation }
+function removeUndefinedValuesObject(obj: Record<any, any>) {
+  const filteredObj = {}
+  Object.keys(obj).forEach((key) => {
+    if (obj[key] !== undefined) {
+      filteredObj[key] = obj[key]
+    }
+  })
+  return filteredObj
+}
+
+export { validateEmail, recipientEscalation, removeUndefinedValuesObject }

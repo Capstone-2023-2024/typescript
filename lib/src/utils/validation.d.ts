@@ -3,4 +3,5 @@ import { CurrentUserRoleType } from "../types/user";
 declare const validateEmail: (email: string) => boolean;
 /** If it returns faculty, there is a problem */
 declare function recipientEscalation(role: CurrentUserRoleType): CurrentUserRoleType;
-export { validateEmail, recipientEscalation };
+declare function removeUndefinedValuesObject(obj: Record<any, any>): {};
+export { validateEmail, recipientEscalation, removeUndefinedValuesObject };
