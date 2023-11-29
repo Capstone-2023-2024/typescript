@@ -6,6 +6,6 @@ type CollectionPathType =
   | "adviser"
   | "permission"
   | "announcement"
-  | "projectSuggestion"
+  | "project_suggestion"
 
 export type { CollectionPathType }

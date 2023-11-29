@@ -3,9 +3,10 @@ import type { DateFileProps, FirestoreDatabaseProps } from "./document"
 interface OptionProps {
   value: string
   vote?: number
+  index: number
 }
 /** Student Number or Info for commenter */
-interface CommentProps {
+interface CommentProps extends DateFileProps {
   commenter: string
   value: string
 }
