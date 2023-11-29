@@ -1,7 +1,7 @@
 interface PhotoMediaProps {
-  photoUrls: string[]
+    photoUrls: string[];
 }
 interface DocumentProps {
-  files: string[]
+    files: string[];
 }
-export type { PhotoMediaProps, DocumentProps }
+export type { PhotoMediaProps, DocumentProps };
