@@ -5,6 +5,7 @@ import type { PhotoMediaProps } from "./media"
 type AnnouncementType =
   | "event"
   | "university_memorandum"
+  | "university memorandum"
   | "recognition"
   | "others"
 

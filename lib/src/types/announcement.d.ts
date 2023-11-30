@@ -1,7 +1,7 @@
 import type { DateProps } from "./date";
 import type { DateFileProps, FirestoreDatabaseProps } from "./document";
 import type { PhotoMediaProps } from "./media";
-type AnnouncementType = "event" | "university_memorandum" | "recognition" | "others";
+type AnnouncementType = "event" | "university_memorandum" | "university memorandum" | "recognition" | "others";
 interface ReactNativeCalendarProps {
     color: string;
     dotColor: string;
