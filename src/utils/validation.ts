@@ -23,14 +23,25 @@ function recipientEscalation(role: CurrentUserRoleType): CurrentUserRoleType {
   }
 }
 
-function removeUndefinedValuesObject(obj: Record<any, any>) {
+function removeObjectWithType(
+  obj: Record<any, any>,
+  mode: "key" | "value",
+  type: undefined | string | number | boolean
+) {
   const filteredObj = {}
+
+  /** Value filtering */
   Object.keys(obj).forEach((key) => {
-    if (obj[key] !== undefined) {
-      filteredObj[key] = obj[key]
+    switch (mode) {
+      case "key":
+        return key !== type && (filteredObj[key] = obj[key])
+      case "value":
+        return obj[key] !== type && (filteredObj[key] = obj[key])
+      default:
+        return
     }
   })
   return filteredObj
 }
 
-export { validateEmail, recipientEscalation, removeUndefinedValuesObject }
+export { validateEmail, recipientEscalation, removeObjectWithType }
