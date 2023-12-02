@@ -5,7 +5,7 @@
   "main": "./lib/src/index.js",
   "types": "./lib/src/types",
   "scripts": {
-    "build": "if exist \"./lib\" rmdir /s /q \"./lib\""
+    "clean-lib": "if exist \"./lib\" rmdir /s /q \"./lib\""
   },
   "author": "nikitimi",
   "license": "MIT",
