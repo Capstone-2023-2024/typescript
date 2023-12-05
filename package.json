@@ -1,5 +1,5 @@
 {
-  "name": "typescript",
+  "name": "@cares/common",
   "version": "1.0.3",
   "description": "Library for CARES",
   "main": "./lib/src/index.js",
