@@ -4,6 +4,7 @@
     "module": "CommonJS",
     "target": "ES2017",
     "emitDeclarationOnly": false,
+    "isolatedModules": true,
     "declaration": true,
     "composite": true,
     "outDir": "./lib"

@@ -5,12 +5,13 @@
   "main": "./lib/src/index.js",
   "types": "./lib/src/types",
   "scripts": {
-    "clean-lib": "if exist \"./lib\" rmdir /s /q \"./lib\""
+    "clean-lib": "if exist \"./lib\" rmdir /s /q \"./lib\"",
+    "build": "npm run clean-lib && tsc"
   },
   "author": "nikitimi",
   "license": "MIT",
   "dependencies": {
-    "react": "^18.2.0",
-    "firebase": "^10.6.0"
+    "firebase": "^10.6.0",
+    "react": "^18.2.0"
   }
 }
